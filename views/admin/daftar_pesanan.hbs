@@ -1,0 +1,135 @@
+  <div class="container mb-4">
+      <div class="row">
+        <div class="col-12 mt-4">
+          <p class="text-muted">Home / Daftar Pesanan</p>
+        </div>   
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              
+              <h4 class="mb-4">Daftar Pesanan</h4>
+              {{#if msg_warning}}
+                <div class="alert alert-warning">{{msg_warning}}</div>
+              {{/if}}
+              {{#if msg_success}}
+                <div class="alert alert-success">{{msg_success}}</div>
+              {{/if}}
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Gambar</th>
+                      <th scope="col">Jenis</th>
+                      <th scope="col">Pembayaran</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each daftar_pesanan}}
+                    <tr>
+                      <th class="align-middle" scope="row">1</th>
+                      <td class="align-middle"><img src="{{this.gambar}}" width="50" height="50"/></td>
+                      <td class="align-middle">{{this.jenis}}</td>
+                      <td class="align-middle">{{this.pembayaran}}</td>
+                      <td class="align-middle">{{this.status}}</td>
+                      <td class="align-middle text-center">
+                        <a href="/admin/detail_pesanan/{{this.id_pesanan}}" class="btn btn-info btn-sm">Detail</a>
+                        {{!-- <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target=".modal{{this.id_pesanan}}">Detail</button> --}}
+                        {{!-- Modal --}}
+                        <div class="modal modal{{this.id_pesanan}} fade bd-example-modal-xl"  tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                          <div class="modal-dialog  modal-dialog-scrollable modal-xl">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Detail Pemesanan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+
+                              <div class="modal-body">
+                                <div class="container-fluid">
+                                  <div class="row">
+                                    <div class="col-12">
+                                      
+                                      <div class="card mb-3">
+                                        <div class="row no-gutters">
+                                          <div class="col-md-4">
+                                            <img src="{{this.gambar}}" class="card-img" alt="Gambar">
+                                          </div>
+                                          <div class="col-md-8">
+                                            <div class="card-body text-left">
+                                              <h5 class="card-title mb-0">{{this.jenis}}</h5>
+                                              <p class="card-text"><small class="text-muted">Dipesan tanggal {{this.tanggal}}</small></p>
+                                              <table class=" text-left table table-bordered table-sm">
+                                                  <tr>
+                                                    <td class="text-left">Ukuran bingkai</th>
+                                                    <td>{{this.ukuran_bingkai}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Jumlah Orang Pada Foto</th>
+                                                    <td>{{this.jumlah_orang}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Kalimat Pada Foto</th>
+                                                    <td>{{this.tulisan}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Keterangan Foto</th>
+                                                    <td>{{this.keterangan}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Total Pembayaran</th>
+                                                    <td>{{this.biaya}}</td>
+                                                  </tr>
+                                                
+                                              </table>
+                                              <strong>Detail Pemesan</strong>
+                                              <table class=" text-left table table-sm table-bordered">
+                                                  <tr>
+                                                    <td class="text-left">Nama Pemesan</th>
+                                                    <td>{{this.nama}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Alamat</th>
+                                                    <td>{{this.alamat}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td>Pengiriman Melalui</th>
+                                                    <td>{{this.ekspedisi}}</td>
+                                                  </tr>
+                                              </table>
+                                              <a href="/admin/pesanan/mulai_kerjakan?id={{this.id_pesanan}}" class="btn btn-sm btn-primary">Mulai Kerjakan</a>
+                                              <a href="/admin/pesanan/hapus_pesanan?id={{this.id_pesanan}}" class="btn btn-sm btn-danger">Hapus Pesanan</a>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            
+
+                            </div>
+                          </div>
+                        </div>
+                        {{!-- /Modal --}}
+                      </td>
+
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+     
+    </div>
+  </div>
+</div>

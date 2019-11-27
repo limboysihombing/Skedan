@@ -1,0 +1,15 @@
+@font-face{
+    src: url('/font/Viga-Regular.ttf');
+    font-family: 'viga';
+}
+@font-face{
+    src: url('/font/DINPRO-BLACK.OTF');
+    font-family: 'dinpro'
+}
+.title{
+    font-family: dinpro;
+    font-size: 25px;
+}
+body{
+    background: #f9f9f9;
+}

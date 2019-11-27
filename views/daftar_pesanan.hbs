@@ -1,0 +1,79 @@
+
+  <div class="container mb-4">
+      <div class="row">
+        <div class="col-12 mt-4">
+          <p class="text-muted">Home / Daftar Pesanan</p>
+        </div>   
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              
+              <h4 class="mb-4">Daftar Pesanan</h4>
+              {{#if msg_success}}
+                <div class="alert alert-success">{{msg_success}}</div>
+              {{/if}}
+              {{#if msg_warning}}
+                <div class="alert alert-warning">{{msg_warning}}</div>
+              {{/if}}
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Gambar</th>
+                      <th scope="col">Jenis</th>
+                      <th scope="col">Pembayaran</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each daftar_pesanan}}
+                    <tr>
+                      <th class="align-middle" scope="row">1</th>
+                      <td class="align-middle" ><img src="{{this.gambar}}" width="50" height="50"/></td>
+                      <td class="align-middle" >{{this.jenis}}</td>
+                      <td class="align-middle status_pembayaran">{{this.pembayaran}}</td>
+                      <td class="align-middle" >{{this.status}}</td>
+                      <td class="align-middle text-center">
+                        <a href="/pemesanan/detail_pesanan/{{this.id_pesanan}}" class="btn btn-info btn-sm">Detail Pesanan</a>
+                      </td>
+
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+
+               
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+     
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+  $(document).ready(function(){
+    $status_bayar = $('.status_pembayaran')
+
+    $($status_bayar).each((ind, elm)=>{
+      $text = $(elm).text()
+      if($(elm).text() != 'Belum Dibayar'){
+        $img = '<img src="'+ $text +'" width="50" height="50"/>'
+        $(elm).empty()
+        $(elm).append('<a href="" class="btn btn-outline-success"><span class="badge badge-light">&#10004;</span><span class="sr-only">unread messages</span> Telah Dibayar</a>')
+      }
+      else{
+        $(elm).empty()
+        $(elm).append('<span class="badge badge-light">&#10006;</span> Belum Dibayar</a>')
+      }
+    })
+  });
+</script>

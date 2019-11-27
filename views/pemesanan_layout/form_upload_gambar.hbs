@@ -1,0 +1,42 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      
+      <div class="card">
+        <div class="card-body">
+          <h4 class="mb-4">Upload Gambar</h4>
+
+            <div class="form-group row">
+              <label for="jenisPesanan" class="col-sm-2 col-form-label"><strong>Jenis Pesanan</strong></label>
+              <div class="col-sm-6">
+                <input type="text" readonly class="form-control" id="staticEmail2" value="email@example.com">
+              </div>
+            </div>
+
+            <div class="border p-4 mb-4">
+              {{#if msg}}
+                <div class="alert alert-danger">{{msg}}</div>
+              {{/if}}
+              <form action="/pemesanan/uploadFoto" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="gambar">Upload Gambar Disini. (Max. 10mb)</label>
+                  <input type="file" name="gambar" class="form-control-file" id="gambar">
+                  <input type="text" name="nama" class="form-control-file">
+                </div>
+                <button type="submit" class="btn btn-sm btn-info">Upload</button>
+              </form>
+              {{#if file}}
+                <img class="my-4 img-thumbnail" src="{{file}}" alt="Gambar">
+              {{/if}}
+            </div>
+            
+            <div class="mx-auto" style="width: 200px;">
+
+              <a href="" class="btn btn-primary mb-2">Pesan Sekarang Juga</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+{
+  "name": "seni",
+  "version": "1.0.0",
+  "description": "Tugas Kuliah",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "arts"
+  ],
+  "author": "limboy",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.17.1",
+    "popper.js": "^1.16.0",
+    "uuid": "^3.3.3"
+  }
+}

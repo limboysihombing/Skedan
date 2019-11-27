@@ -1,0 +1,224 @@
+  <div class="container">
+      <div class="row">
+        <div class="col-12 mt-4">
+          <p class="text-muted">Home / {{nama}}</p>
+        </div>
+         
+        <div class="col-12 mb-4">
+
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-4">
+                  <figure class="figure">
+                    <img src="{{this.image}}" class="figure-img img-fluid rounded" alt="...">
+                    {{!-- <figcaption class="figure-caption">A caption for the above image.</figcaption> --}}
+                  </figure>
+                  <pre>
+Lama Pengerjaan : {{this.lama_pengerjaan}}
+Ukuran Tersedia : 8" x 10"
+                  8" x 12"
+                  10"x 12"
+                  12"x 14"
+NB : Harga sudah termasuk bingkai kaca(pigura)
+                  </pre>
+                </div>
+
+                <div class="col-md-8">
+                  <h4 class="text-success"><strong>{{this.nama}}</strong></h4>
+                  <p>{{this.deskripsi}}</p>
+                  <h5 class="text-warning" id="harga_dasar">Harga Dasar : Rp. {{this.harga}}</h5>
+                <hr>
+                  <form action="/pemesanan" method="POST" enctype="multipart/form-data">
+                    <input class="form-control-plaintext" readonly type="hidden" name="jenis" value="{{this.nama}}">
+                    <div class="form-group row">
+                      <label for="ukuran_bingkai" class="col-sm-4 col-form-label">Ukuran Bingai</label>
+                      <div class="col-sm-4">
+                        <select class="form-control" name="ukuran_bingkai" id="ukuran_bingkai">
+                          <option>8" x 10"</option>
+                          <option>8" x 12"</option>
+                          <option>10" x 12"</option>
+                          <option>12" x 14"</option>
+                        </select>
+                      </div>
+                    <span class="col-sm-4 col-form-label" id="ukuran_bingkai_harga">Rp. 0</span>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="jumlah_orang" class="col-form-label col-sm-4">Jumlah Orang Pada Foto</label>
+                      <div class="col-sm-4">
+                        <select class="form-control" name="jumlah_orang" id="jumlah_orang">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                        </select>
+                      </div>
+                      <span class="col-sm-4 col-form-label" id="jumlah_orang_harga">Rp. 0</span>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="gambar" class="col-form-label col-sm-4">Upload Gambar Disini. (Max. 10mb)</label>
+                      <div class="col-sm-4">
+                        <input type="file" name="gambar" class="form-control-file" id="gambar" accept="image/x-png,image/gif,image/jpeg">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="kalimat" class="col-form-label col-sm-4">Kalimat Pada Gambar</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" name="tulisan" id="kalimat" rows="2"></textarea>
+                      </div>
+                    </div>
+          
+                    <div class="form-group row">
+                      <label for="keterangan" class="col-form-label col-sm-4">Keterangan</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" name="keterangan" id="keterangan" rows="2" placeholder="Jika ada keterangan tambahan, silahkan ditulis"></textarea>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="alert-success p-2 rounded">
+                          <div class="text-center mt-1">
+                            <h4 id="total_harga">Total Harga : Rp. 200.000</h4>
+                          </div>
+                        </div>
+                        <input id="total_biaya" type="hidden" readonly class="form-control-plaintext" name="biaya" value="50000">
+                      </div>
+                    </div>
+
+                    <h4 class="my-4">Pengiriman</h4>
+                    <div class="form-group row">
+                      <label for="alamat" class="col-form-label col-sm-4">Alamat</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" name="alamatPemesan" id="alamat" rows="2" placeholder="Masukkan alamat lengkap anda"></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label for="hp" class="col-form-label col-sm-4">No. Hp</label>
+                      <div class="col-sm-6">
+                        <input type="text" class="rounded-0 form-control" name="noHpPemesan" id="hp">*Masukkan nomor HP yang dapat dihubungi.
+                      </div>
+                    </div>
+
+                    {{!-- Radio --}}
+                    <div class="form-group row">
+                      <label for="hp" class="col-form-label col-sm-2">Jenis Pengiriman</label>
+                      <div class="col-sm-4">
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ekspedisi" id="exampleRadios1" value="option1">
+                        <label class="form-check-label" for="exampleRadios1">
+                          JNE
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          Go-Send
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                          J&T
+                        </label>
+                      </div>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="mx-auto" style="width: 200px;">
+                      <button type="submit" class="btn btn-lg rounded-0 btn-outline-success mb-2">Pesan Sekarang</button>
+                    </div>
+                  </form>
+                 
+                </div> 
+              </div>
+              
+            </div>
+          </div>  
+        
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      
+  $(document).ready(function(){
+    $harga_bingkai = 50000
+    $harga_jumlah_orang = 20000
+    $dasar = $('#harga_dasar')
+    $harga = 0
+
+    //total harga
+    $total_harga = $('#total_harga')
+    $total_harga.text($dasar.text())
+    $total_biaya = $('#total_biaya')
+    
+    $total_biaya.val($harga_bingkai + $harga_jumlah_orang)
+
+    //bingkai & jumlah orang
+    $ukuran_bingkai = $('#ukuran_bingkai')
+    $ukuran_bingkai_harga = $('#ukuran_bingkai_harga')
+    $jumlah_orang = $('#jumlah_orang')
+    $jumlah_orang_harga = $('#jumlah_orang_harga')
+
+    $ukuran_bingkai_harga.text("Rp. " + $harga_bingkai)
+    $jumlah_orang_harga.text("Rp. " + $harga_jumlah_orang)
+
+    $($ukuran_bingkai).on('change', function() {
+      if(this.value == '8" x 10"'){
+        $harga_bingkai = 50000
+      }
+      else if(this.value == '8" x 12"'){
+        $harga_bingkai = (50000 + 20000)
+      }
+      else if(this.value == '10" x 12"'){
+        $harga_bingkai = 50000 + 30000
+      }
+      else if(this.value == '12" x 14"'){
+        $harga_bingkai = 50000 + 40000
+      }
+      $ukuran_bingkai_harga.text("Rp. " + $harga_bingkai)
+      $total_harga.text("Total Harga : Rp. " + ($harga_bingkai + $harga_jumlah_orang))
+
+      $total_biaya.val($harga_bingkai + $harga_jumlah_orang)
+      console.log($total_biaya)
+    });
+    $($jumlah_orang).on('change', function() {
+      if(this.value == '1'){
+        $harga_jumlah_orang = 20000
+      }
+      else if(this.value == '2'){
+        $harga_jumlah_orang = 20000 + 10000
+      }
+      else if(this.value == '3'){
+        $harga_jumlah_orang = 20000 + 20000
+      }
+
+      $jumlah_orang_harga.text("Rp. " + $harga_jumlah_orang)
+      $total_harga.text("Total Harga : Rp. " + ($harga_bingkai + $harga_jumlah_orang))
+      $total_biaya.val($harga_bingkai + $harga_jumlah_orang)
+    });
+
+
+
+
+
+    $status_bayar = $('.status_pembayaran')
+
+    $($status_bayar).each((ind, elm)=>{
+      $text = $(elm).text()
+      if($(elm).text() != 'Belum Dibayar'){
+        $img = '<img src="'+ $text +'" width="50" height="50"/>'
+        $(elm).empty()
+        $(elm).append('<a href="" class="btn btn-outline-success"><span class="badge badge-light">&#10004;</span><span class="sr-only">unread messages</span> Telah Dibayar</a>')
+      }
+      else{
+        $(elm).empty()
+        $(elm).append('<span class="badge badge-light">&#10006;</span> Belum Dibayar</a>')
+      }
+    })
+  });
+    </script>

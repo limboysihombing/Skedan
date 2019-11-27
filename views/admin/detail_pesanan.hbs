@@ -1,0 +1,126 @@
+<div class="container my-4">
+  <div class="row">
+    <div class="col-12">
+      
+
+      <div class="card">
+        <div class="card-body">
+            {{#if msg_success}}
+              <div class="alert alert-success">{{msg_success}}</div>
+            {{/if}}
+            {{#if msg_warning}}
+              <div class="alert alert-success">{{msg_warning}}</div>
+            {{/if}}
+          <div class="row">
+            <div class="col-md-4">
+              <img src="{{pesanan.gambar}}" class="card-img" alt="Gambar">
+            </div>
+            <div class="col-md-8">
+              
+                <h4 class="text-success">{{pesanan.jenis}}</h4>
+                <p class="card-text"><small class="text-muted">Dipesan Tanggal {{pesanan.tanggal}}</small></p>
+                <hr>
+                <table class=" text-left table table-sm table-borderless">
+                    <tr>
+                      <td class="text-left">Ukuran bingkai</th>
+                      <td>:</td>
+                      <td>{{pesanan.ukuran_bingkai}}</td>
+                    </tr>
+                    <tr>
+                      <td>Jumlah Orang Pada Foto</th>
+                      <td>:</td>
+                      <td>{{pesanan.jumlah_orang}}</td>
+                    </tr>
+                    <tr>
+                      <td>Kalimat Pada Foto</th>
+                      <td>:</td>
+                      <td>{{pesanan.tulisan}}</td>
+                    </tr>
+                    <tr>
+                      <td>Keterangan Foto</th>
+                      <td>:</td>
+                      <td>{{pesanan.keterangan}}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Pembayaran</th>
+                      <td>:</td>
+                      <td>{{pesanan.biaya}}</td>
+                    </tr>
+                    <tr>
+                      <td>Pembayaran</th>
+                      <td>:</td>
+                      <td>
+                        {{pesanan.pembayaran}}
+                      </td>
+                    </tr>
+                </table>
+                <hr>
+                 <h6>Detail Pemesan</h6>
+                <table class=" text-left table table-sm table-bordered">
+                    <tr>
+                      <td class="text-left">Nama Pemesan</th>
+                      <td>{{pesanan.nama}}</td>
+                    </tr>
+                    <tr>
+                      <td>Alamat</th>
+                      <td>{{pesanan.alamat}}</td>
+                    </tr>
+                    <tr>
+                      <td>Pengiriman Melalui</th>
+                      <td>{{pesanan.ekspedisi}}</td>
+                    </tr>
+                </table>
+                <hr>
+                <h6 class="">Komentar</h6>
+                
+                <div class="card rounded-0 bg-light">
+                  <div class="card-body">
+                    {{#if komentar}}
+                      {{#each komentar}}
+                        {{#if this.isadmin}}
+                        
+                          <div class="bg-success text-white rounded-right float-right w-75 card p-2 mb-2">
+                            <h6 class="m-0">{{this.nama}} (admin)</h6>  
+                            {{this.pesan}}
+                          </div>
+
+                        {{else}}
+
+                          <div class="w-75 rounded-left card p-2 mb-2">
+                            <h6 class="m-0">{{this.nama}}</h6>  
+                            {{this.pesan}}
+                          </div>
+
+                        {{/if}}
+                      {{/each}}
+                    {{/if}}
+
+
+                  </div>
+
+                </div>
+                <form class="mt-2" action="/admin/pesan_komentar/{{pesanan.id_pesanan}}" method="post">
+                  <div class="form-group">
+                    <textarea name="pesan" placeholder="Masukkan pesan/komentar anda disini." class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                </form>
+
+                <hr>
+                <a href="/admin/mulai_kerjakan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-warning">Mulai Mengerjakan</a>
+                <a href="/admin/kirim_konfirmasi/{{pesanan.id_pesanan}}" class="btn btn-sm btn-primary">Konfirmasi Gambar</a>
+                <a href="/admin/kirim_barang/{{pesanan.id_pesanan}}" class="btn btn-sm btn-success">Kirim Barang</a>
+                <hr>
+                <a href="/admin" class="btn btn-sm btn-outline-warning">Ke Daftar Pesanan</a>
+                <a href="/admin/hapus_pesanan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-outline-danger">Batalkan Pesanan</a>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+    </div>
+  </div>
+
+</div>

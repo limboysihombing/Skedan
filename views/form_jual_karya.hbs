@@ -1,0 +1,86 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-4">
+      <p class="text-muted">Home / Jual Karya Seni</p>
+    </div>   
+
+    <div class="col-12 mb-4">
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-12">
+              <h4>Jual Karya Seni</h4>
+            </div>
+          </div>
+           
+          <form action="/upload_karya" method="POST">
+            {{!-- nama barang --}}
+            <div class="form-group row">
+              <label for="inputNama" class="col-sm-2 col-form-label">NamaBarang</label>
+              <div class="col-sm-10">
+                <input name="nama_barang" type="text" class="form-control" id="inputNama" placeholder="Nama Barang">
+              </div>
+            </div>
+            {{!-- Jenis barang --}}
+            <div class="form-group row">
+              <label for="pilihJenis" class="col-sm-2 col-form-label">Jenis Barang</label>
+              <div class="col-sm-10">
+                <select name="jenis" class="form-control" id="pilihJenis">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+            </div>
+
+            {{!-- Gambar --}}
+            <div class="form-group row">
+              <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
+              <div class="col-sm-10">
+                {{!-- <input type="file" name="upfile" value=""> --}}
+                <input name="gambar_barang" type="file" class="form-control-file" id="gambar">
+              </div>
+            </div>
+
+            {{!-- Jumlah Barang Tersedia --}}
+            <div class="form-group row">
+              <label for="jumlahBarang" class="col-sm-2 col-form-label">Jumlah Barang Tersedia</label>
+              <div class="col-sm-4">
+                <input name="jumlah_barang" type="number" class="form-control" id="jumlahBarang" value="1">
+              </div>
+            </div>
+
+            {{!-- Keterangan/Deskripsi --}}
+            <div class="form-group row">
+              <label for="deskripsiBarang" class="col-sm-2 col-form-label">Keterangan/Deskripsi</label>
+              <div class="col-sm-10">
+                <textarea name="deskripsi_barang" class="form-control" id="deskripsiBarang" rows="3" placeholder="Deskripsi Barang"></textarea>
+              </div>
+            </div>
+
+            {{!-- Harga Barang --}}
+            <div class="form-group row">
+              <label for="inputHarga" class="col-sm-2 col-form-label">Harga Barang</label>
+              <div class="col-sm-4">
+                <input name="harga_barang" type="number" class="form-control" id="inputNama" placeholder="Rp. ">
+              </div>
+            </div>
+            
+            {{!-- Submit --}}
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Jual</button>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

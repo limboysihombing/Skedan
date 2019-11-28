@@ -14,6 +14,10 @@
           <div class="row">
             <div class="col-md-4">
               <img src="{{pesanan.gambar}}" class="card-img" alt="Gambar">
+              <hr>
+              <br>
+              <h5><strong>Hasil Sementara</strong></h5>
+              <img src="{{pesanan.gambar_konfirmasi}}" class="card-img" alt="Gambar">
             </div>
             <div class="col-md-8">
               
@@ -47,15 +51,32 @@
                       <td>{{pesanan.biaya}}</td>
                     </tr>
                     <tr>
+                      <td>Statur Pengerjaan</th>
+                      <td>:</td>
+                      <td id="status_pengerjaan">{{pesanan.status}}</td>
+                    </tr>
+                    <tr>
                       <td>Pembayaran</th>
                       <td>:</td>
                       <td>
                         {{pesanan.pembayaran}}
                       </td>
                     </tr>
+                    <tr>
+                      <td>Kirim Gambar Konfirmasi</th>
+                      <td>:</td>
+                      <td>
+                        <form class="form-inline" action="/admin/konfirmasi_gambar/{{pesanan.id_pesanan}}" method="POST" enctype="multipart/form-data">
+                          <div class="form-group mb-2">
+                            <input type="file" name="gambar_konfirmasi" class="form-control-file" id="gambar_pembayaran" accept="image/x-png,image/gif,image/jpeg" required>
+                          </div>
+                          <button class="btn btn-info btn-sm" type="submit">upload</button>
+                        </form>
+                      </td>
+                    </tr>
                 </table>
                 <hr>
-                 <h6>Detail Pemesan</h6>
+                 <h6><strong>Detail Pemesan</strong></h6>
                 <table class=" text-left table table-sm table-bordered">
                     <tr>
                       <td class="text-left">Nama Pemesan</th>
@@ -71,7 +92,7 @@
                     </tr>
                 </table>
                 <hr>
-                <h6 class="">Komentar</h6>
+                <h6 class=""><strong>Diskusi/Komentar</strong></h6>
                 
                 <div class="card rounded-0 bg-light">
                   <div class="card-body">
@@ -108,12 +129,10 @@
 
                 <hr>
                 <a href="/admin/mulai_kerjakan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-warning">Mulai Mengerjakan</a>
-                <a href="/admin/kirim_konfirmasi/{{pesanan.id_pesanan}}" class="btn btn-sm btn-primary">Konfirmasi Gambar</a>
                 <a href="/admin/kirim_barang/{{pesanan.id_pesanan}}" class="btn btn-sm btn-success">Kirim Barang</a>
                 <hr>
-                <a href="/admin" class="btn btn-sm btn-outline-warning">Ke Daftar Pesanan</a>
-                <a href="/admin/hapus_pesanan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-outline-danger">Batalkan Pesanan</a>
-              
+                <a href="/admin/semua_pesanan" class="btn btn-sm btn-outline-warning">Ke Daftar Pesanan</a>
+                <a id="btn_hapus" href="/admin/hapus_pesanan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-outline-danger">Batalkan Pesanan</a>
             </div>
           </div>
         </div>
@@ -124,3 +143,16 @@
   </div>
 
 </div>
+
+<script>
+  $(document).ready(function(){
+    $btn_hapus = $('#btn_hapus')
+    
+    if($('#status_pengerjaan').text() != "Pending"){
+      $btn_hapus.click(function(e) {
+        e.preventDefault();
+        alert('Pesanan tidak dapat dibatalkan, pesanan sedang di proses.')
+      });
+    }
+  })
+</script>

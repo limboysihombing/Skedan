@@ -5,6 +5,7 @@
 
       <div class="card">
         <div class="card-body">
+          
             {{#if msg_success}}
               <div class="alert alert-success">{{msg_success}}</div>
             {{/if}}
@@ -14,6 +15,11 @@
           <div class="row">
             <div class="col-md-4">
               <img src="{{pesanan.gambar}}" class="card-img" alt="Gambar">
+              {{#if pesanan.gambar_konfirmasi}}
+                <hr>
+                <h5 class="my-2"><strong>Hasil Sementara</strong></h5>
+                <img src="{{pesanan.gambar_konfirmasi}}" class="card-img mb-2" alt="Gambar">
+              {{/if}}
             </div>
             <div class="col-md-8">
               
@@ -45,6 +51,11 @@
                       <td>Total Pembayaran</th>
                       <td>:</td>
                       <td>{{pesanan.biaya}}</td>
+                    </tr>
+                    <tr>
+                      <td>Status Pengerjaan</th>
+                      <td>:</td>
+                      <td id="status_pengerjaan">{{pesanan.status}}</td>
                     </tr>
                     <tr>
                       <td>Lakukan Pembayaran</th>
@@ -89,15 +100,15 @@
                 </div>
                 <form class="mt-2" action="/pemesanan/pesan_komentar/{{pesanan.id_pesanan}}" method="post">
                   <div class="form-group">
-                    <textarea name="pesan" placeholder="Masukkan pesan/komentar anda disini." class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    <textarea name="pesan" placeholder="Masukkan pesan/komentar anda disini." class="form-control rounded-0" id="exampleFormControlTextarea1" rows="3" required></textarea>
                   </div>
-                  <button type="submit" class="btn btn-sm btn-primary">Kirim</button>
+                  <button type="submit" class="rounded-0 btn btn-sm btn-primary">Kirim</button>
                 </form>
 
                 <hr>
                 <a href="/pemesanan/daftar_pesanan" class="btn btn-sm btn-success">Ke Daftar Pesanan</a>
-                <a href="/pemesanan/hapus_pesanan?id={{pesanan.id_pesanan}}" class="btn btn-sm btn-outline-danger">Batalkan Pesanan</a>
-              
+                <a id="btn_hapus" href="/pemesanan/hapus_pesanan?id={{pesanan.id_pesanan}}" class="btn btn-sm btn-outline-danger">Batalkan Pesanan</a>
+                
             </div>
           </div>
         </div>
@@ -108,3 +119,16 @@
   </div>
 
 </div>
+
+<script>
+  $(document).ready(function(){
+    $btn_hapus = $('#btn_hapus')
+    
+    if($('#status_pengerjaan').text() != "Pending"){
+      $btn_hapus.click(function(e) {
+        e.preventDefault();
+        alert('Pesanan tidak dapat dibatalkan, pesanan sedang dikerjakan.')
+      });
+    }
+  })
+</script>

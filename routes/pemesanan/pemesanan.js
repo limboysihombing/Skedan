@@ -17,16 +17,7 @@ router.get('/*', (req, res, next)=>{
     res.render('login', {msg : 'Silahkan login terlebih dahulu untuk lanjut.'})
   }
 })
-// router.get('/form', (req, res)=>{
-//   if(req.akun){
-//     res.render('./pemesanan_layout/form_pemesanan', {akun : req.akun})
-//   }
-//   else {
-//     // cookie tidak tersedia
-//     res.status(402)
-//     res.render('login', {msg : 'Silahkan login terlebih dahulu untuk lanjut.'})
-//   }
-// })
+
 router.get('/detail_pesanan/:id', (req, res)=>{
   var komentar = {}
   daftar_komentar.selectByPesanan(req.params.id, (h)=>{
@@ -58,7 +49,7 @@ router.post('/', (req, res)=>{
           pesanan.id_customer = req.akun.id_customer
           pesanan.status = 'Pending'
           pesanan.pembayaran = 'Belum Dibayar'
-          pesanan.gambar = `/asset/img/${req.file.filename}`
+          pesanan.gambar = `/asset/img/gambar_pemesanan/${req.file.filename}`
           daftar_pesanan.createPesanan(pesanan, (results)=>{
             console.log(results)
           })
@@ -76,7 +67,7 @@ router.post('/', (req, res)=>{
 })
 
 var storage = multer.diskStorage({
-  destination: './public/asset/img/',
+  destination: './public/asset/img/gambar_pemesanan/',
   filename: (req, file, cb) => {
     cb(null, file.filename + '-' + Date.now() + 
     path.extname(file.originalname))
@@ -121,7 +112,7 @@ router.post('/pembayaran/:id', (req,res)=>{
           res.render('./error_page', {msg_warning:'Error : Gambar belum di upload!'})
         }
         else{
-          daftar_pesanan.updatePembayaran(`/asset/img/pembayaran/${req.file.filename}`, req.params.id, (result)=>{
+          daftar_pesanan.updatePembayaran(`/asset/img/gambar_pembayaran/${req.file.filename}`, req.params.id, (result)=>{
             res.redirect('/pemesanan/daftar_pesanan')
           })
         }
@@ -131,7 +122,7 @@ router.post('/pembayaran/:id', (req,res)=>{
 })
 
 var storagePembayaran = multer.diskStorage({
-  destination: './public/asset/img/pembayaran/',
+  destination: './public/asset/img/gambar_pembayaran/',
   filename: (req, file, cb) => {
     cb(null, 'Pembayaran_' + Date.now() + 
     path.extname(file.originalname))

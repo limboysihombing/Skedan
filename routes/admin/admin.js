@@ -3,6 +3,8 @@ const router = express.Router()
 var daftar_pesanan = require('../../config/pesanan_function')
 var daftar_komentar = require('../../config/komentar_functon')
 var user = require('../../config/user_function')
+const multer = require('multer')
+const path = require('path')
 var jwt = require('jsonwebtoken')
 var uuid = require('uuid')
 
@@ -33,6 +35,7 @@ router.get('/semua_pesanan', (req, res)=>{
   }
  
 })
+
 router.get('/detail_pesanan/:id_pesanan', (req, res)=>{
   if(req.akun){
     var komentar = {}
@@ -73,6 +76,8 @@ router.get('/mulai_kerjakan/:id_pesanan', (req,res)=>{
     res.send('Maaf Anda belum login')
   }
 })
+
+
 router.get('/hapus_pesanan/:id_pesanan', (req, res) =>{
   if(req.akun){
     
@@ -97,7 +102,6 @@ router.get('/hapus_pesanan/:id_pesanan', (req, res) =>{
   }
 })
 
-
 router.post('/pesan_komentar/:id_pesanan', (req, res)=>{
   if(req.cookies && req.cookies.token){
     req.akun = jwt.verify(req.cookies.token, 'kuncipenting')
@@ -116,4 +120,61 @@ router.post('/pesan_komentar/:id_pesanan', (req, res)=>{
   }
 })
 
+//Konfirmasi Gambar
+router.post('/konfirmasi_gambar/:id_pesanan', (req,res)=>{
+  if(req.cookies && req.cookies.token){
+    req.akun = jwt.verify(req.cookies.token, 'kuncipenting')
+    uploadKonfirmasiGambar(req, res, (err)=>{
+      if(err){
+        res.render('./error_page', {msg_error:err})
+      }else{
+        if(req.file == undefined){
+          res.render('./error_page', {msg_warning:'Error : Gambar belum di upload!'})
+        }
+        else{
+          daftar_pesanan.updateOneColumn('status', '"Konfirmasi Gambar"', req.params.id_pesanan,(result)=>{
+            console.log('Berhasil Update, Mulai kerjakan.')
+          })
+
+          daftar_pesanan.updateOneColumn('gambar_konfirmasi', `"/asset/img/gambar_konfirmasi/${req.file.filename}"`, req.params.id_pesanan, (result)=>{
+            res.redirect('/admin/detail_pesanan/'+req.params.id_pesanan)
+          })
+        }
+      }
+    })
+  }
+})
+
+var storageKonfirmasi = multer.diskStorage({
+  destination: './public/asset/img/gambar_konfirmasi/',
+  filename: (req, file, cb) => {
+    cb(null, 'Konfirmasi_' + Date.now() + 
+    path.extname(file.originalname))
+  }
+})
+
+var uploadKonfirmasiGambar = multer({
+  storage : storageKonfirmasi,
+  limits:{fileSize:10000000},
+  fileFilter : (req, file, cb) =>{
+    checkFileTYpe(file, cb);
+  }
+}).single('gambar_konfirmasi');
+
+// Chekck File Type
+function checkFileTYpe(file, cb){
+  // Allowed ext
+  const fileTypes = /jpeg|bmp|jpg|png|gif/;
+  // Check ext
+  const extname = fileTypes.test(path.extname(file.originalname).toLowerCase())
+
+  // Check mime
+  const mimetype = fileTypes.test(file.mimetype)
+  if(mimetype && extname){
+    return cb(null, true)
+  }
+  else{
+    cb('Error : Hanya dapat menerima gambar!')
+  }
+}
 module.exports = router

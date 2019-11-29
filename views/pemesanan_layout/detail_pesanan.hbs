@@ -127,7 +127,7 @@
     if($('#status_pengerjaan').text() != "Pending"){
       $btn_hapus.click(function(e) {
         e.preventDefault();
-        alert('Pesanan tidak dapat dibatalkan, pesanan sedang dikerjakan.')
+        alert('Pesanan tidak dapat dibatalkan, status pesanan "' + ($('#status_pengerjaan').text()) + '"')
       });
     }
   })

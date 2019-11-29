@@ -145,6 +145,22 @@ router.post('/konfirmasi_gambar/:id_pesanan', (req,res)=>{
   }
 })
 
+//Pengiriman Barang
+router.get('/kirim_barang/:id_pesanan', (req,res)=>{
+
+  if(req.cookies && req.cookies.token){
+    req.akun = jwt.verify(req.cookies.token, 'kuncipenting')
+    daftar_pesanan.updateOneColumn('status', '"Dalam Pengiriman"', req.params.id_pesanan,(result)=>{
+      res.redirect(`/admin/detail_pesanan/${req.params.id_pesanan}`)
+    })
+  }
+  else{
+    // cookie tidak tersedia
+    res.status(402)
+    res.send('Maaf Anda belum login')
+  }
+})
+
 var storageKonfirmasi = multer.diskStorage({
   destination: './public/asset/img/gambar_konfirmasi/',
   filename: (req, file, cb) => {

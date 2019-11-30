@@ -16,6 +16,15 @@ var user_function = {
         hasil(res)
       }
     })
+  },
+  insert_user: (obj, hasil) => {
+    connection.query('INSERT INTO customer (id_customer, nama, alamat, email, password, no_hp, isadmin) VALUES (?, ?, ?, ?, ?, ?, 0)',
+      [obj.id_customer, obj.nama, obj.alamat, obj.email, obj.password, obj.no_hp], (err, res) => {
+        if (err) throw err
+        else {
+          hasil(res)
+        }
+      })
   }
 }
 

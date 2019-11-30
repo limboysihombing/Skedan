@@ -34,6 +34,7 @@ app.use('/admin', require('./routes/admin/admin'))
 app.use('/pemesanan', require('./routes/pemesanan/pemesanan'))
 
 app.use('/login', require('./routes/auth/login'))
+app.use('/register', require('./routes/auth/register'))
 
 app.get('/logout', function(req, res){
     res.cookie('token', ' ')

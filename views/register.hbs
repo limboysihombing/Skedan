@@ -1,0 +1,47 @@
+<div class="container my-4">
+    <div class="row justify-content-md-center">
+
+        <div class="col-md-auto col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="text-center mb-2">Register</h3>
+                    <hr>
+                    {{#if msg}}
+                    <div class="alert alert-warning">{{msg}}</div>
+                    {{/if}}
+                    <form action="/register/" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Nama</label>
+                            <input name="nama" type="text" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Masukkan Nama" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email </label>
+                            <input name="email" type="email" class="form-control" id="exampleInputPassword1"
+                                placeholder="Masukkan Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Nomor HP</label>
+                            <input name="no_hp" type="telp" class="form-control" id="exampleInputPassword1"
+                                placeholder="Masukkan Nomor HP" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Alamat</label>
+                            <input name="alamat" type="text" class="form-control" id="exampleInputPassword1"
+                                placeholder="Masukkan Alamat" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Masukkan Password" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Daftar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -30,7 +30,7 @@
                   <tbody>
                     {{#each daftar_pesanan}}
                     <tr>
-                      <th class="align-middle" scope="row">1</th>
+                      <th class="align-middle" scope="row">{{@index}}</th>
                       <td class="align-middle"><img src="{{this.gambar}}" width="50" height="50"/></td>
                       <td class="align-middle">{{this.jenis}}</td>
                       <td class="align-middle">{{this.pembayaran}}</td>

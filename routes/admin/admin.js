@@ -193,4 +193,39 @@ function checkFileTYpe(file, cb){
     cb('Error : Hanya dapat menerima gambar!')
   }
 }
+
+router.get('/selesaikan_pesanan/:id_pesanan', (req, res)=>{
+  if(req.cookies && req.cookies.token){
+    req.akun = jwt.verify(req.cookies.token, 'kuncipenting')
+    daftar_pesanan.updateOneColumn('status', '"Selesai"', req.params.id_pesanan,(result)=>{
+      res.redirect(`/admin/detail_pesanan/${req.params.id_pesanan}`)
+    })
+  }
+  else{
+    // cookie tidak tersedia
+    res.status(402)
+    res.send('Maaf Anda belum login')
+  }
+})
+router.get('/data_penjualan', (req, res)=>{
+  if(req.akun){
+    daftar_pesanan.selectPesananSelesai((hasil)=>{
+      if(hasil.length < 1)
+        res.render('./admin/data_penjualan', {daftar_pesanan : hasil, akun : req.akun, layout: 'admin', msg_warning : 'Belum ada data.'})
+      else{
+        var total = 0
+        hasil.forEach(elm => {
+          total += elm.biaya
+        });
+
+        res.render('./admin/data_penjualan', {daftar_pesanan : hasil, akun : req.akun, layout: 'admin', total_pemasukan: total})
+      }
+    })
+  } 
+  else{
+    // cookie tidak tersedia
+    res.status(402)
+    res.send('Maaf Anda belum login')
+  }
+})
 module.exports = router

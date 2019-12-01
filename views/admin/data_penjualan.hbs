@@ -1,0 +1,56 @@
+  <div class="container mb-4">
+      <div class="row">
+        <div class="col-12 mt-4">
+          <p class="text-muted">Home / Daftar Pesanan</p>
+        </div>   
+
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              
+              <h4 class="mb-4">Daftar Pesanan Terjual</h4>
+              {{#if msg_warning}}
+                <div class="alert alert-warning">{{msg_warning}}</div>
+              {{/if}}
+              {{#if msg_success}}
+                <div class="alert alert-success">{{msg_success}}</div>
+              {{/if}}
+              <div class="table-responsive">
+                <table class="table table-hover mb-4">
+                  <thead>
+                    <tr>
+                      <th scope="col">No</th>
+                      <th scope="col">Gambar</th>
+                      <th scope="col">Jenis</th>
+                      <th scope="col">Harga</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Aksi</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each daftar_pesanan}}
+                    <tr>
+                      <th id="index" class="align-middle" scope="row">{{@index}}</th>
+                      <td class="align-middle"><img src="{{this.gambar}}" width="50" height="50"/></td>
+                      <td class="align-middle">{{this.jenis}}</td>
+                      <td class="align-middle">{{this.biaya}}</td>
+                      <td class="align-middle">{{this.status}}</td>
+                      <td class="align-middle text-center">
+                        <a href="/admin/detail_pesanan/{{this.id_pesanan}}" class="btn btn-info btn-sm">Detail</a>
+                      </td>
+
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+
+              <strong class="text-success">Total Pemasukan : Rp. {{total_pemasukan}}</strong>
+              </div>
+
+            </div>
+          </div>
+        </div>
+     
+    </div>
+  </div>
+</div>

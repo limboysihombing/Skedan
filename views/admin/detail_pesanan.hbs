@@ -14,10 +14,12 @@
           <div class="row">
             <div class="col-md-4">
               <img src="{{pesanan.gambar}}" class="card-img" alt="Gambar">
-              <hr>
-              <br>
-              <h5><strong>Hasil Sementara</strong></h5>
-              <img src="{{pesanan.gambar_konfirmasi}}" class="card-img" alt="Gambar">
+              
+              {{#if pesanan.gambar_konfirmasi}}
+                <hr>
+                <h5 class="my-2"><strong>Hasil Sementara</strong></h5>
+                <img src="{{pesanan.gambar_konfirmasi}}" class="card-img mb-2" alt="Gambar">
+              {{/if}}
             </div>
             <div class="col-md-8">
               
@@ -129,7 +131,8 @@
 
                 <hr>
                 <a href="/admin/mulai_kerjakan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-warning">Mulai Mengerjakan</a>
-                <a href="/admin/kirim_barang/{{pesanan.id_pesanan}}" class="btn btn-sm btn-success">Kirim Barang</a>
+                <a href="/admin/kirim_barang/{{pesanan.id_pesanan}}" class="btn btn-sm btn-info">Kirim Barang</a>
+                <a href="/admin/selesaikan_pesanan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-success">Selesaikan Pesanan</a>
                 <hr>
                 <a href="/admin/semua_pesanan" class="btn btn-sm btn-outline-warning">Ke Daftar Pesanan</a>
                 <a id="btn_hapus" href="/admin/hapus_pesanan/{{pesanan.id_pesanan}}" class="btn btn-sm btn-outline-danger">Batalkan Pesanan</a>

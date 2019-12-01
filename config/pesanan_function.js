@@ -2,7 +2,7 @@ var connection = require("./connection.js")
 
 var pesanan_function ={
   semua_pesanan : function(cb){
-    connection.query("select * from pemesanan JOIN customer on pemesanan.id_customer = customer.id_customer order by tanggal ASC", (err, result)=>{
+    connection.query("select * from pemesanan JOIN customer on pemesanan.id_customer = customer.id_customer where pemesanan.status != 'Selesai' order by tanggal ASC", (err, result)=>{
 
       if(err) throw err;
       cb(result)
@@ -16,7 +16,7 @@ var pesanan_function ={
   },
 
   selectByCustomer : (id, cb) => {
-    connection.query(`select * from pemesanan where id_customer = '${id}'`, (err, result)=>{
+    connection.query(`select * from pemesanan where id_customer = '${id}' and status != "Selesai"`, (err, result)=>{
       if(err) throw err
       else{
         cb(result)
@@ -71,6 +71,14 @@ var pesanan_function ={
         cb(result);
       }
     });
+  },
+  selectPesananSelesai : (result)=>{
+    connection.query('Select * from `pemesanan` where status = "Selesai"', (err, hasil)=>{
+      if(err) throw err
+      else{
+        result(hasil);
+      }
+    })
   }
 }
 // var blog_function  = {

@@ -60,9 +60,7 @@
                     <tr>
                       <td>Pembayaran</th>
                       <td>:</td>
-                      <td>
-                        {{pesanan.pembayaran}}
-                      </td>
+                      <td id="bayar">{{pesanan.pembayaran}}</td>
                     </tr>
                     <tr>
                       <td>Kirim Gambar Konfirmasi</th>
@@ -158,4 +156,14 @@
       });
     }
   })
+</script>
+<script>
+
+  var bayar = document.getElementById('bayar')
+  console.log(bayar.innerHTML)
+  if(bayar.innerHTML != "Belum Dibayar"){
+    var x = bayar.innerHTML
+    bayar.innerHTML = '<img width="50" src="' + x +'">'
+  }
+
 </script>

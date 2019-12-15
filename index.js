@@ -49,19 +49,19 @@ app.get('/:id', (req, res)=>{
             res.render('detail_jasa', {akun : req.akun, nama : "Wedha's Pop Art Potrait (WPAP)", image: "/asset/img/wpap/wpap.JPG", harga : 70000, deskripsi :"Ilustrasi potret wajah yang bersaling-silang secara geometri dengan penggunaan kontradiksi warna-warna khusu", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "sketsa"){
-            res.render('detail_jasa', {akun : req.akun, nama : "Sketsa Pensil", harga : 70000, image: "/asset/img/sketsa/sketsa.JPG", deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {akun : req.akun, nama : "Sketsa Pensil", harga : 70000, image: "/asset/img/sketsa/sketsa.JPG", deskripsi :"Sketsa Pensil adalah penggambaran suatu objek yang dilakukan secara manual oleh manusia hanya menggunakan pensil.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "karikatur"){
-            res.render('detail_jasa', {akun : req.akun, nama : "Karikatur", image :"/asset/img/karikatur/karikatur.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {akun : req.akun, nama : "Karikatur", image :"/asset/img/karikatur/karikatur.jpg", harga : 70000, deskripsi :"Karikatur adalah penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "vektor"){
-            res.render('detail_jasa', {akun : req.akun, nama : "Gambar Vektor", image :"/asset/img/vector/bunghatta.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {akun : req.akun, nama : "Gambar Vektor", image :"/asset/img/vector/bunghatta.jpg", harga : 70000, deskripsi :"Gambar vektor adalah gambar yang menggunakan poligon dalam menciptakn gambar pada grafis komputer. Pada dasarnya, gambar vektor menggunakan vektor. Lokasi-lokasi pada vektor dinamakan control points atau nodes.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "doodle"){
-            res.render('detail_jasa', {akun : req.akun, nama : "Doodle Art", image :"/asset/img/doodle/doodle.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {akun : req.akun, nama : "Doodle Art", image :"/asset/img/doodle/doodle.jpg", harga : 70000, deskripsi :"Doodle adalah gambar sederhana yang dapat memiliki makna representasi konkret atau hanya terdiri dari garis acak dan abstrak, umumnya tanpa pernah mengangkat perangkat gambar dari kertas, dalam hal ini biasanya disebut coretan.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "watercolor"){
-            res.render('detail_jasa', {akun : req.akun, nama : "Water Color", image :"/asset/img/watercolor/watercolor.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {akun : req.akun, nama : "Water Color", image :"/asset/img/watercolor/watercolor.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek menggunakan water color dengan teknik tertentu.", lama_pengerjaan : "1-3 Hari"})
         }
         else{
             res.render('error_page', {msg_error : "Halaman Tidak Ditemukan"})
@@ -73,19 +73,19 @@ app.get('/:id', (req, res)=>{
             res.render('detail_jasa', {nama : "Wedha's Pop Art Potrait (WPAP)", image: "/asset/img/wpap/wpap.JPG", harga : 70000, deskripsi :"Ilustrasi potret wajah yang bersaling-silang secara geometri dengan penggunaan kontradiksi warna-warna khusu", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "sketsa"){
-            res.render('detail_jasa', {nama : "Sketsa Pensil", harga : 70000, image: "/asset/img/sketsa/sketsa.JPG", deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {nama : "Sketsa Pensil", harga : 70000, image: "/asset/img/sketsa/sketsa.JPG", deskripsi :"Sketsa Pensil adalah penggambaran suatu objek yang dilakukan secara manual oleh manusia hanya menggunakan pensil.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "karikatur"){
-            res.render('detail_jasa', {nama : "Karikatur", image :"/asset/img/karikatur/karikatur.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {nama : "Karikatur", image :"/asset/img/karikatur/karikatur.jpg", harga : 70000, deskripsi :"Karikatur adalah penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "vektor"){
-            res.render('detail_jasa', {nama : "Gambar Vektor", image :"/asset/img/vector/bunghatta.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {nama : "Gambar Vektor", image :"/asset/img/vector/bunghatta.jpg", harga : 70000, deskripsi :"Gambar vektor adalah gambar yang menggunakan poligon dalam menciptakn gambar pada grafis komputer. Pada dasarnya, gambar vektor menggunakan vektor. Lokasi-lokasi pada vektor dinamakan control points atau nodes.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "doodle"){
-            res.render('detail_jasa', {nama : "Doodle Art", image :"/asset/img/doodle/doodle.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {nama : "Doodle Art", image :"/asset/img/doodle/doodle.jpg", harga : 70000, deskripsi :"Doodle adalah gambar sederhana yang dapat memiliki makna representasi konkret atau hanya terdiri dari garis acak dan abstrak, umumnya tanpa pernah mengangkat perangkat gambar dari kertas, dalam hal ini biasanya disebut coretan.", lama_pengerjaan : "1-3 Hari"})
         }
         else if(req.params.id == "watercolor"){
-            res.render('detail_jasa', {nama : "Water Color", image :"/asset/img/watercolor/watercolor.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek konkret dengan cara melebih-lebihkan ciri khas objek tersebut.", lama_pengerjaan : "1-3 Hari"})
+            res.render('detail_jasa', {nama : "Water Color", image :"/asset/img/watercolor/watercolor.jpg", harga : 70000, deskripsi :"Penggambaran suatu objek menggunakan water color dengan teknik tertentu.", lama_pengerjaan : "1-3 Hari"})
         }
         else{
             res.render('error_page', {msg_error : "Halaman Tidak Ditemukan"})

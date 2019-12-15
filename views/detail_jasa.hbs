@@ -15,18 +15,18 @@
                     {{!-- <figcaption class="figure-caption">A caption for the above image.</figcaption> --}}
                   </figure>
                   <pre>
-Lama Pengerjaan : {{this.lama_pengerjaan}}
-Ukuran Tersedia : 8" x 10"
+-Ukuran Tersedia : 8" x 10"
                   8" x 12"
                   10"x 12"
                   12"x 14"
-NB : Harga sudah termasuk bingkai kaca(pigura)
+- Harga termasuk bingkai kaca(pigura)
+- Lama Pengerjaan : {{this.lama_pengerjaan}}
                   </pre>
                 </div>
 
                 <div class="col-md-8">
                   <h4 class="text-success"><strong>{{this.nama}}</strong></h4>
-                  <p>{{this.deskripsi}}</p>
+                  <p>{{deskripsi}}</p>
                   <h5 class="text-warning" id="harga_dasar">Harga Dasar : Rp. {{this.harga}}</h5>
                 <hr>
                   <form action="/pemesanan" method="POST" enctype="multipart/form-data">
@@ -104,27 +104,14 @@ NB : Harga sudah termasuk bingkai kaca(pigura)
 
                     {{!-- Radio --}}
                     <div class="form-group row">
-                      <label for="hp" class="col-form-label col-sm-2">Jenis Pengiriman</label>
-                      <div class="col-sm-4">
-                        <div class="form-check">
-                        <input class="form-check-input" type="radio" name="ekspedisi" id="exampleRadios1" value="option1">
-                        <label class="form-check-label" for="exampleRadios1">
-                          JNE
-                        </label>
+                      <label for="hp" class="col-form-label col-sm-4">Jenis Pengiriman</label>
+                      <div class="col-sm-6">
+                        <select class="form-control" name="ekspedisi" id="jumlah_orang">
+                          <option>JNE</option>
+                          <option>J&T</option>
+                        </select>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                          Go-Send
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                        <label class="form-check-label" for="exampleRadios2">
-                          J&T
-                        </label>
-                      </div>
-                      </div>
+                      
                     </div>
                     <hr>
                     <div class="mx-auto" style="width: 200px;">

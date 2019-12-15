@@ -33,7 +33,7 @@
                       <th class="align-middle" scope="row">{{@index}}</th>
                       <td class="align-middle"><img src="{{this.gambar}}" width="50" height="50"/></td>
                       <td class="align-middle">{{this.jenis}}</td>
-                      <td class="align-middle">{{this.pembayaran}}</td>
+                      <td class="align-middle bayar">{{this.pembayaran}}</td>
                       <td class="align-middle">{{this.status}}</td>
                       <td class="align-middle text-center">
                         <a href="/admin/detail_pesanan/{{this.id_pesanan}}" class="btn btn-info btn-sm">Detail</a>
@@ -133,3 +133,17 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  var bayar = document.getElementsByClassName('bayar')
+
+  for(i = 0; i<bayar.length;i++){
+    var x = ""
+    if(bayar[i].innerHTML != "Belum Dibayar"){
+      x = bayar[i].innerHTML   
+      bayar[i].innerHTML = '<img width="50" src="' + x +'">'
+    }
+    
+  }
+</script>
